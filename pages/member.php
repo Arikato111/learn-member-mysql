@@ -1,8 +1,11 @@
 <?php
-$title = import('nexit/title');
+$deleteMember = import('./components/deleteMember');
 $fetchMemberList = import('./components/FetchMemberList');
+$title = import('nexit/title');
 
-$Member = function() use ($title, $fetchMemberList) {
+$Member = function() use ($title, $fetchMemberList, $deleteMember) {
+    if(isset($_GET['delete'])) return $deleteMember();
+    
     $title("Member");
     return <<<HTML
     <main>

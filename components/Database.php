@@ -55,6 +55,9 @@ class Database {
         }
 
     }
+    public function deleteMember($id) {
+        $this->conn->query("DELETE FROM member WHERE mem_id = '{$id}'");
+    }
 }
 
 $export = null; 
