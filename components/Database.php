@@ -26,6 +26,17 @@ class Database {
         return $allMember;
     }
 
+    public function updateMember($id ,$mem_name, $mem_address, $mem_date, $mem_email, $mem_tel){
+        $this->conn->query("UPDATE `member` 
+        SET 
+        `mem_name`= '{$mem_name}',
+        `mem_address`='{$mem_address}',
+        `mem_date`='{$mem_date}',
+        `mem_email`='{$mem_email}',
+        `mem_tel`='{$mem_tel}',
+         WHERE mem_id = {$id}");
+    }
+
     public function register() {
         $name = $_POST['mem_name'];
         $address = $_POST['mem_address'];
