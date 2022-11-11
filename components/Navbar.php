@@ -29,6 +29,9 @@ $Navbar = function () {
                 <li class="nav-item">
                     <a class="nav-link" href="/news">ข่าวประชาสัมพันธ์</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/member">สมาชิก</a>
+                </li>
                 {$Logined}
             </ul>
             </div>

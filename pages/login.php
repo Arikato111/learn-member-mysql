@@ -48,15 +48,14 @@ $export = function () use ($Logined, $logout) {
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <h3>Elderly social system</h3>
-                <h4>ระบบลงทะเบียนผู้สูงอายุ</h4>
+                <form class="form-control py-3 my-3 shadow-sm fs-5" action="/login" method="post">
+                    <h1 class="text-center">Login</h1>
                     {$error}
-                <form class="form-control py-3 shadow-sm fs-5" action="/login" method="post">
 
-                    <label for="">ชื่อผู้ใช้งาน</label>
+                    <label class="form-label" for="">ชื่อผู้ใช้งาน</label>
                     <input class="form-control" type="text" name="mem_user">
 
-                    <label for="">รหัสผ่าน</label>
+                    <label class="form-label" for="">รหัสผ่าน</label>
                     <input class="form-control" type="password" name="mem_password">
 
                     <label for=""></label>

@@ -18,27 +18,28 @@ $export = function () use ($title) {
                 <h4>ระบบลงทะเบียนผู้สูงอายุ</h4>
                 <form class="form-control fs-5 shadow-sm py-3" action="/register" method="post">
                     <label for="">ชื่อ - สกุล</label>
-                    <input class="form-control" type="text" name="mem_name">
+                    <input class="form-control" type="text" name="mem_name" required>
+
                     <label for="">ที่อยู่</label>
-                    <textarea class="form-control" name="mem_address" id="" cols="30" rows="5"></textarea>
+                    <textarea class="form-control" name="mem_address" id="" cols="30" rows="5" required></textarea>
 
                     <label for="">วัน/เดือน/ปี เกิด</label>
-                    <input class="form-control" type="date" name="mem_date">
+                    <input class="form-control" type="date" name="mem_date" required>
 
                     <label for="">อีเมล์</label>
-                    <input class="form-control" type="email" name="mem_email">
+                    <input class="form-control" type="email" name="mem_email" required>
 
                     <label for="">หมายเลขโทรศัพท์</label>
-                    <input class="form-control" type="number" name="mem_tel">
+                    <input class="form-control" type="number" name="mem_tel" required>
 
                     <label for="">ชื่อผู้ใช้งาน</label>
-                    <input class="form-control" type="text" name="mem_user">
+                    <input class="form-control" type="text" name="mem_user" required>
 
                     <label for="">รหัสผ่าน</label>
-                    <input class="form-control" type="password" name="mem_password">
+                    <input class="form-control" type="password" name="mem_password" required>
 
                     <label for=""></label>
-                    <input class="form-control btn btn-primary" type="submit" name="submit" value="ตกลง">
+                    <input class="form-control btn btn-primary" type="submit" name="submit" value="ตกลง" >
 
                 </form>
             </div>

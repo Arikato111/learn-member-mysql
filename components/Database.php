@@ -11,6 +11,12 @@ class Database {
         );
 
     }
+    
+    public function getAllMember() {
+        $result = $this->conn->query("SELECT * FROM member");
+        $allMember = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $allMember;
+    }
 
     public function register() {
         $name = $_POST['mem_name'];
@@ -23,14 +29,14 @@ class Database {
 
         $sql = "INSERT INTO `member`(`mem_id`, `mem_name`, `mem_address`, `mem_date`, `mem_email`, `mem_tel`, `mem_user`, `mem_password`, `mem_status`)
                 VALUES (NULL,'{$name}','{$address}','{$date}','{$email}','{$tel}','{$user}','{$password}','user');";
-        mysqli_query($this->conn, $sql);
+        $this->conn->query($sql);
         header("Location: /register");
         die;
     }
 
     public function isUser($user) {
         $sql = "SELECT * FROM member WHERE mem_user = '{$user}' LIMIT 1";
-        $result = mysqli_query($this->conn, $sql);
+        $result = $this->conn->query($sql);
         if($result) {
             return mysqli_fetch_assoc($result);
         } else {
@@ -40,7 +46,7 @@ class Database {
     }
     public function login($user, $passwrod) {
         $sql = "SELECT * FROM member WHERE mem_user  = '{$user}' AND mem_password = '{$passwrod}' LIMIT 1;";
-        $result = mysqli_query($this->conn, $sql);
+    $result = $this->conn->query($sql);
         $user =  mysqli_fetch_assoc($result);
         if($user) {
             return $user;
