@@ -42,6 +42,7 @@ $export = function () use ($Logined, $logout) {
         }
     }
 
+    $GLOBALS['title'] = "Login";
     return <<<HTML
     <div class="container">
         <div class="row">
