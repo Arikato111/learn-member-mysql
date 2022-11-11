@@ -1,10 +1,12 @@
 <?php
 $deleteMember = import('./components/deleteMember');
+$editMember = import('./components/editMember');
 $fetchMemberList = import('./components/FetchMemberList');
 $title = import('nexit/title');
 
-$Member = function() use ($title, $fetchMemberList, $deleteMember) {
+$Member = function() use ($title, $fetchMemberList, $editMember, $deleteMember) {
     if(isset($_GET['delete'])) return $deleteMember();
+    if(isset($_GET['edit'])) return $editMember();
     
     $title("Member");
     return <<<HTML

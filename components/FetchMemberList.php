@@ -13,7 +13,7 @@ $fetchMemberList = function () {
             <td>{$mb['mem_email']}</td>
             <td>{$mb['mem_tel']}</td>
             <td>{$mb['mem_user']}</td>
-            <td><a href="/member?edit"><button class="btn btn-info">แก้ไข</button></a></td>
+            <td><a href="/member?edit&id={$mb['mem_id']}"><button class="btn btn-info">แก้ไข</button></a></td>
             <td><a href="/member?delete&id={$mb['mem_id']}"><button class="btn btn-danger">ลบ</button></a></td>
         </tr>
         HTML;

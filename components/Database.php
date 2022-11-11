@@ -11,7 +11,15 @@ class Database {
         );
 
     }
-    
+    public function getMemberInfo($id) {
+        $result = $this->conn->query("SELECT * FROM member WHERE mem_id = '{$id}' LIMIT 1");
+        $member = mysqli_fetch_assoc($result);
+        if($member) {
+            return $member;
+        } else {
+            return false;
+        }
+    }
     public function getAllMember() {
         $result = $this->conn->query("SELECT * FROM member");
         $allMember = mysqli_fetch_all($result, MYSQLI_ASSOC);
