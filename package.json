@@ -1,0 +1,17 @@
+{
+    "name": "nexit template for php",
+    "version": "1.0.0",
+    "description": "template for php",
+    "author": "",
+    "license": "ISC",
+    "package": {
+        "nexit": {
+            "version": "main",
+            "url": "https://github.com/Arikato111/NEXIT/tree/module"
+        },
+        "use-import": {
+            "version": "main",
+            "url": "https://github.com/Arikato111/use-import/tree/master"
+        }
+    }
+}
