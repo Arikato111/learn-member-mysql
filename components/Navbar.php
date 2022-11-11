@@ -27,7 +27,7 @@ $Navbar = function () {
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ข่าวประชาสัมพันธ์</a>
+                    <a class="nav-link" href="/news">ข่าวประชาสัมพันธ์</a>
                 </li>
                 {$Logined}
             </ul>

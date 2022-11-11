@@ -14,9 +14,9 @@ $export = function () use ($title) {
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <h3>Elderly social system</h3>
+                <h3 class="text-center my-3">Elderly social system</h3>
                 <h4>ระบบลงทะเบียนผู้สูงอายุ</h4>
-                <form class="form-control" action="/register" method="post">
+                <form class="form-control fs-5 shadow-sm py-3" action="/register" method="post">
                     <label for="">ชื่อ - สกุล</label>
                     <input class="form-control" type="text" name="mem_name">
                     <label for="">ที่อยู่</label>
@@ -38,7 +38,7 @@ $export = function () use ($title) {
                     <input class="form-control" type="password" name="mem_password">
 
                     <label for=""></label>
-                    <input class="form-control btn btn-success" type="submit" name="submit" value="ตกลง">
+                    <input class="form-control btn btn-primary" type="submit" name="submit" value="ตกลง">
 
                 </form>
             </div>

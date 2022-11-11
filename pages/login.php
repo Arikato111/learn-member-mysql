@@ -51,7 +51,7 @@ $export = function () use ($Logined, $logout) {
                 <h3>Elderly social system</h3>
                 <h4>ระบบลงทะเบียนผู้สูงอายุ</h4>
                     {$error}
-                <form class="form-control" action="/login" method="post">
+                <form class="form-control py-3 shadow-sm fs-5" action="/login" method="post">
 
                     <label for="">ชื่อผู้ใช้งาน</label>
                     <input class="form-control" type="text" name="mem_user">
@@ -60,7 +60,7 @@ $export = function () use ($Logined, $logout) {
                     <input class="form-control" type="password" name="mem_password">
 
                     <label for=""></label>
-                    <input class="form-control btn btn-success" type="submit" name="submit" value="ตกลง">
+                    <input class="form-control btn btn-primary" type="submit" name="submit" value="ตกลง">
 
                 </form>
             </div>
