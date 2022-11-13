@@ -4,7 +4,25 @@ $editMember = import('./components/editMember');
 $fetchMemberList = import('./components/FetchMemberList');
 $title = import('nexit/title');
 
-$Member = function() use ($title, $fetchMemberList, $editMember, $deleteMember) {
+$MustRegister = function () {
+    return <<<HTML
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="alert alert-danger text-center my-3">
+                    You must login to view this page
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    HTML;
+};
+
+$Member = function() use ($title, $fetchMemberList, $editMember, $deleteMember, $MustRegister) {
+    if(!isset($_SESSION['member'])) return $MustRegister();
+
     if(isset($_GET['delete'])) return $deleteMember();
     if(isset($_GET['edit'])) return $editMember();
     
