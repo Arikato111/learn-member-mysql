@@ -8,11 +8,7 @@ $Navbar = function () {
     </li>
     HTML: "";
 
-    $Logined = isset($_SESSION['member']) ? '
-    <li class="nav-item">
-        <a class="nav-link" href="/poll">สร้างแบบสอบถาม</a>
-    </li>
-    ': 
+    $Logined = isset($_SESSION['member']) ? '': 
         '<li class="nav-item">
              <a class="nav-link" href="/register">สมัครสมาชิก</a>
          </li>
