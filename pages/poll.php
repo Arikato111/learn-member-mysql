@@ -20,7 +20,7 @@ $Poll = function () use ($title, $AddPoll) {
     for($i=0; $i < $count; $i++) {
         $answer .= <<<HTML
         <label for="" class="form-label">ตัวเลือก</label>
-        <input class="form-control" type="text" name="poll_detail[]">
+        <input class="form-control" type="text" name="poll_detail[]" required>
         HTML;
     }
 
@@ -37,7 +37,7 @@ $Poll = function () use ($title, $AddPoll) {
                     <form action="#" method="POST" class="form-control p-3 my-3">
                         
                         <label for="" class="form-label">หัวข้อแบบสอบถาม</label>
-                        <input class="form-control" type="text" name="poll_head">
+                        <input class="form-control" type="text" name="poll_head" required>
                         
                         <div>
                             <a class="btn btn-outline-primary mt-3" href="/poll?count={$count_plus}">+ เพิ่มตัวเลือก</a>
