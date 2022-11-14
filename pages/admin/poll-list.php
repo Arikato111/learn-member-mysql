@@ -18,7 +18,7 @@ $PollList = function () use ($FrameContent, $title) {
 
         // insert choices inside polll
         $content .= <<<HTML
-        <div>
+        <div class="form-control my-3 shadow-sm">
             <label class="mt-3">{$p['poll_name']}</label>
             <select class="form-select my-3" name="" id="">
                 {$option}
@@ -29,7 +29,7 @@ $PollList = function () use ($FrameContent, $title) {
 
     $title("Show Poll");
     return $FrameContent(<<<HTML
-    <form class="form-control my-3">
+    <form class="my-3">
         $content
     </form>
     HTML);
