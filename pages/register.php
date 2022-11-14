@@ -16,7 +16,7 @@ $export = function () use ($title) {
             <div class="col-md-6">
                 <h3 class="text-center my-3">Elderly social system</h3>
                 <h4>ระบบลงทะเบียนผู้สูงอายุ</h4>
-                <form class="form-control fs-5 shadow-sm py-3" action="/register" method="post">
+                <form class="form-control fs-5 shadow-sm py-3 mb-5" action="/register" method="post">
                     <label for="">ชื่อ - สกุล</label>
                     <input class="form-control" type="text" name="mem_name" required>
 

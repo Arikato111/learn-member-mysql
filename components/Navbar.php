@@ -7,10 +7,10 @@ $Navbar = function () {
         </li>' 
         : 
         '<li class="nav-item">
-             <a class="nav-link" href="/register">Register</a>
+             <a class="nav-link" href="/register">สมัครสมาชิก</a>
          </li>
           <li class="nav-item">
-             <a class="nav-link" href="/login">Login</a>
+             <a class="nav-link" href="/login">เข้าสู่ระบบ</a>
           </li>
         '
         ;
@@ -30,7 +30,7 @@ $Navbar = function () {
                         <a class="nav-link" href="/news">ข่าวประชาสัมพันธ์</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/member">สมาชิก</a>
+                        <a class="nav-link" href="/member">รายชื่อสมาชิก</a>
                     </li>
                         {$Logined}
                 </ul>
