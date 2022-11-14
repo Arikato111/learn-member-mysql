@@ -21,17 +21,17 @@ $MustRegister = function () {
 };
 
 $Member = function() use ($title, $fetchMemberList, $editMember, $deleteMember, $MustRegister) {
+    $title("Member");
     if(!isset($_SESSION['member'])) return $MustRegister();
-
+    
     if(isset($_GET['delete'])) return $deleteMember();
     if(isset($_GET['edit'])) return $editMember();
     
-    $title("Member");
     return <<<HTML
     <main>
         <div class="container">
             <div class="row mt-5 form-control">
-                <div class="col-12">
+                <div class="col-12 overflow-scroll">
                     <h2 class="text-center fw-bold m-3">รายชื่อสมาชิก</h2>
                     <table class="table table-hover">
                         <thead>

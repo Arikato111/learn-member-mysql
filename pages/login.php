@@ -1,28 +1,12 @@
 <?php
+$Logined = import('./components/Logined');
+
 $logout = function () {
     session_unset();
     header("Location: /login");
     die;
 };
 
-$Logined = function () {
-    $GLOBALS['title'] = 'you are now logind';
-    return <<<HTML
-    <main class="container">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="alert alert-success text-center mt-5">
-                    You are now Logined
-                </div>
-                    
-            </div>
-            <div class="col-md-3"></div>
-
-        </div>
-    </main>
-    HTML;
-};
 
 $export = function () use ($Logined, $logout) {
 
@@ -34,7 +18,7 @@ $export = function () use ($Logined, $logout) {
         $db = new Database;
         $member = $db->login($_POST['mem_user'], $_POST['mem_password']);
         if($member) {
-            $_SESSION['member'] = $member['mem_user'];
+            $_SESSION['member'] = $member['mem_id'];
             header("Location: /");
             die;
         } else {
