@@ -1,14 +1,6 @@
 <?php 
 
 $Navbar = function () {
-
-    $AddminMenu = isset($_SESSION['status']) && $_SESSION['status'] == 'admin' ?
-    <<<HTML
-    <li class="nav-item">
-        <a class="nav-link" href="/admin/">admin</a>
-    </li>
-    HTML: "";
-
     $Logined = isset($_SESSION['member']) ? '
         <li class="nav-item">
             <a class="nav-link" href="/login?logout">Logout</a>
@@ -23,9 +15,9 @@ $Navbar = function () {
         '
         ;
     return <<<HTML
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Elderly</a>
+            <a class="navbar-brand" href="/">Admin</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" >
                 <span class="navbar-toggler-icon"></span>
@@ -33,9 +25,14 @@ $Navbar = function () {
 
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {$AddminMenu}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">หน้าหลัก</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/news">ข่าวประชาสัมพันธ์</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/member">รายชื่อสมาชิก</a>
                     </li>
                         {$Logined}
                 </ul>

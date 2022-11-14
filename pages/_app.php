@@ -7,15 +7,19 @@ $Navbar = import('./components/Navbar');
 $NotFountPage = import('./pages/_error');
 
 $export = function ($Component) use ($Navbar, $NotFountPage) {
-  $GLOBALS['title'] = 'title';
+  $GLOBALS['title'] = 'title'; // default title
 
   $content = $Component();
   if(getParams(0) == 'admin') {
+    // check permission
     if(!isset($_SESSION['member']) || !isset($_SESSION['status']) || $_SESSION['status'] != 'admin') {
+      // if have no permission show notfound page
       $content = $NotFountPage();
+    } else {
+      // check admin to change navbar
+      $Navbar = import('./components/admin/AdminNavbar');
     }
   }
-  
   
   return <<<HTML
     <!DOCTYPE html>

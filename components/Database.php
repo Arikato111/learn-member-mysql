@@ -33,7 +33,7 @@ class Database {
         `mem_address`='{$mem_address}',
         `mem_date`='{$mem_date}',
         `mem_email`='{$mem_email}',
-        `mem_tel`='{$mem_tel}',
+        `mem_tel`='{$mem_tel}'
          WHERE mem_id = {$id}");
     }
 

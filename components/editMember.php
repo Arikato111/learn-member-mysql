@@ -4,7 +4,7 @@ $title = import('nexit/title');
 $export = function () use ($title) {
     $message = "";
     if(!isset($_GET['id']) || empty($_GET['id'])) {
-        header("Location: /member");
+        header("Location: /admin/member");
     }
     
     $db = new Database;
@@ -27,7 +27,7 @@ $export = function () use ($title) {
                 <h3 class="text-center my-3">Elderly social system</h3>
                 <h4>ระบบลงทะเบียนผู้สูงอายุ</h4>
                 {$message}
-                <form class="form-control fs-5 shadow-sm py-3" action="/member?edit&id={$_GET['id']}" method="post">
+                <form class="form-control fs-5 shadow-sm py-3" action="/admin/member?edit&id={$_GET['id']}" method="post">
                     <label for="">ชื่อ - สกุล</label>
                     <input class="form-control" type="text" name="mem_name" value="{$member['mem_name']}" required>
 

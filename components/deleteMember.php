@@ -4,7 +4,7 @@ $export = function () {
     if(isset($_GET['id'])) {
         $db = new Database;
         $db->deleteMember($_GET['id']);
-        header("Location: /member");
+        header("Location: /admin/member");
         die;
     }
     
