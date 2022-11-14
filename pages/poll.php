@@ -10,7 +10,7 @@ $Poll = function () use ($title, $AddPoll) {
 
     $count = $_GET['count'] ?? 0;
     if($count > 10) $count = 9;
-    if($count < 1) $count = 1;
+    if($count < 2) $count = 2;
     $count = (int) $count;
     $count_plus = $count+1;
     $count_down = $count-1;
@@ -34,7 +34,7 @@ $Poll = function () use ($title, $AddPoll) {
             <div class="col-md-8">
                 <h1 class="text-center">สร้างแบบสอบถาม</h1>
                 <div>
-                    <form action="#" method="POST" class="form-control p-3">
+                    <form action="#" method="POST" class="form-control p-3 my-3">
                         
                         <label for="" class="form-label">หัวข้อแบบสอบถาม</label>
                         <input class="form-control" type="text" name="poll_head">
@@ -47,7 +47,7 @@ $Poll = function () use ($title, $AddPoll) {
                         {$answer}
 
 
-                        <div class="text-center">
+                        <div class="text-center my-3">
                             <button class="btn btn-success" name="submit">สร้างแบบสอบถาม</button>
                         </div>
 
