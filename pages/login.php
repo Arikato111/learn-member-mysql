@@ -33,7 +33,9 @@ $export = function () use ($Logined, $logout) {
     return <<<HTML
     <div class="container">
         <div class="row">
-            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                
+            </div>
             <div class="col-md-6">
                 <form class="form-control py-3 my-3 shadow-sm fs-5" action="/login" method="post">
                     <h1 class="text-center">Login</h1>
@@ -49,6 +51,11 @@ $export = function () use ($Logined, $logout) {
                     <input class="form-control btn btn-primary" type="submit" name="submit" value="ตกลง">
 
                 </form>
+                <div class="text-end">
+                    <a href="/register">
+                        <button class="btn btn-outline-info my-3">Register</button>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="col-md-3"></div>

@@ -12,7 +12,9 @@ $export = function () use ($title) {
     return <<<HTML
     <div class="container">
         <div class="row">
-            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <button onclick="window.history.back()" class="btn btn-outline-danger my-3">back</button>
+            </div>
             <div class="col-md-6">
                 <h3 class="text-center my-3">Elderly social system</h3>
                 <h4>ระบบลงทะเบียนผู้สูงอายุ</h4>
