@@ -10,16 +10,19 @@ $logout = function () {
 
 $export = function () use ($Logined, $logout) {
 
-    if(isset($_GET['logout'])) return $logout();
-    if(isset($_SESSION['member'])) return $Logined();
-        
+    if (isset($_GET['logout'])) return $logout();
+    if (isset($_SESSION['member'])) return $Logined();
+
     $error = "";
-    if(isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
         $db = new Database;
+        // login system
         $member = $db->login($_POST['mem_user'], $_POST['mem_password']);
-        if($member) {
+        if ($member) {
             $_SESSION['member'] = $member['mem_id'];
-            header("Location: /");
+            $_SESSION['status'] = $member['mem_status'];
+            $redirect = $member['mem_status'] == 'admin' ? '/admin/' : "/home";
+            header("Location: {$redirect}");
             die;
         } else {
             $error = '<div class="alert alert-danger">Cannot login</div>';

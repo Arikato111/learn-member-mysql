@@ -12,6 +12,10 @@
         "use-import": {
             "version": "main",
             "url": "https://github.com/Arikato111/use-import/tree/master"
+        },
+        "wisit-router": {
+            "version": "type",
+            "url": "https://github.com/Arikato111/wisit-router/tree/type"
         }
     }
 }

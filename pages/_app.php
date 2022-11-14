@@ -1,13 +1,23 @@
 <?php
 session_start();
+import('wisit-router');
+
 import("./components/Database");
 $Navbar = import('./components/Navbar');
+$NotFountPage = import('./pages/_error');
 
-$export = function ($Component) use ($Navbar) {
-    $GLOBALS['title'] = 'title';
-    $content = $Component();
+$export = function ($Component) use ($Navbar, $NotFountPage) {
+  $GLOBALS['title'] = 'title';
 
-    return <<<HTML
+  $content = $Component();
+  if(getParams(0) == 'admin') {
+    if(!isset($_SESSION['member']) || !isset($_SESSION['status']) || $_SESSION['status'] != 'admin') {
+      $content = $NotFountPage();
+    }
+  }
+  
+  
+  return <<<HTML
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -27,4 +37,3 @@ $export = function ($Component) use ($Navbar) {
     </html>
     HTML;
 };
-?>

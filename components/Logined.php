@@ -1,6 +1,7 @@
 <?php
-$Logined = function () {
-    $GLOBALS['title'] = 'you are now logind';
+$title = import('nexit/title');
+$Logined = function () use ($title) {
+    $title("You are now logined");
     return <<<HTML
     <main class="container">
         <div class="row">
