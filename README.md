@@ -43,3 +43,14 @@
 | mem_user | varchar(50) |
 | mem_password | varchar(50) |
 | mem_status | varchar(10) |
+
+---
+
+#### Table name : `poll`
+
+| Field | Type | Key | Extra |
+| ----- | ---- | --- | ---- |
+| poll_id | int(11) | PRI | AUTO_INCREMENT | 
+| poll_name | varchar(200) |
+| poll_date | date |
+| poll_member_id | int(11) |
