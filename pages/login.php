@@ -42,13 +42,13 @@ $export = function () use ($Logined, $logout) {
                     {$error}
 
                     <label class="form-label" for="">ชื่อผู้ใช้งาน</label>
-                    <input class="form-control" type="text" name="mem_user">
+                    <input class="form-control" type="text" name="mem_user" required>
 
                     <label class="form-label" for="">รหัสผ่าน</label>
-                    <input class="form-control" type="password" name="mem_password">
+                    <input class="form-control" type="password" name="mem_password" required>
 
                     <label for=""></label>
-                    <input class="form-control btn btn-primary" type="submit" name="submit" value="ตกลง">
+                    <input class="form-control btn btn-primary" type="submit" name="submit" value="ตกลง" required>
 
                 </form>
                 <div class="text-end">

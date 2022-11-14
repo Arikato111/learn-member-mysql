@@ -1,19 +1,8 @@
 <?php 
 
 $Navbar = function () {
-    $Logined = isset($_SESSION['member']) ? '
-        <li class="nav-item">
-            <a class="nav-link" href="/login?logout">Logout</a>
-        </li>' 
-        : 
-        '<li class="nav-item">
-             <a class="nav-link" href="/register">สมัครสมาชิก</a>
-         </li>
-          <li class="nav-item">
-             <a class="nav-link" href="/login">เข้าสู่ระบบ</a>
-          </li>
-        '
-        ;
+    $db = new Database;
+    $member = $db->getMemberInfo($_SESSION['member']);
     return <<<HTML
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="container-fluid">
@@ -34,10 +23,13 @@ $Navbar = function () {
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/member">รายชื่อสมาชิก</a>
                     </li>
-                        {$Logined}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/poll">สร้างแบบสอบถาม</a>
+                    </li>
                 </ul>
             </div>
-            
+            <span class="text-white">{$member['mem_name']} / </span>
+            <a class="text-danger" onclick="confirmLogout()">ออกจากระบบ</a>
         </div>
     </nav>
     HTML;

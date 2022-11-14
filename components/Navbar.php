@@ -1,7 +1,6 @@
 <?php 
 
 $Navbar = function () {
-
     $AddminMenu = isset($_SESSION['status']) && $_SESSION['status'] == 'admin' ?
     <<<HTML
     <li class="nav-item">
@@ -10,18 +9,25 @@ $Navbar = function () {
     HTML: "";
 
     $Logined = isset($_SESSION['member']) ? '
-        <li class="nav-item">
-            <a class="nav-link" href="/login?logout">Logout</a>
-        </li>' 
-        : 
+    <li class="nav-item">
+        <a class="nav-link" href="/poll">สร้างแบบสอบถาม</a>
+    </li>
+    ': 
         '<li class="nav-item">
              <a class="nav-link" href="/register">สมัครสมาชิก</a>
          </li>
           <li class="nav-item">
              <a class="nav-link" href="/login">เข้าสู่ระบบ</a>
-          </li>
-        '
-        ;
+          </li>';
+    $LogoutDisplay = "";
+    if(isset($_SESSION['member'])) {
+        $db = new Database;
+        $member = $db->getMemberInfo($_SESSION['member']);
+        $LogoutDisplay = <<<HTML
+        {$member['mem_name']} / <a class="nav-link text-danger" style="cursor:pointer" onclick="confirmLogout()"> ออกจากระบบ</a>
+        HTML;
+    }
+    $db = new Database;
     return <<<HTML
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -40,7 +46,7 @@ $Navbar = function () {
                         {$Logined}
                 </ul>
             </div>
-            
+            {$LogoutDisplay}
         </div>
     </nav>
     HTML;

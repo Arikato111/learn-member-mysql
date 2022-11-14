@@ -37,6 +37,7 @@ $export = function ($Component) use ($Navbar, $NotFountPage) {
       {$Navbar()}
       {$content}
       <script src="/styles/bootstrap/js/bootstrap.bundle.js"></script>
+      <script src="/styles/script.js"></script>
     </body>
     </html>
     HTML;
