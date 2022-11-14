@@ -18,7 +18,7 @@ $export = function () use ($Logined, $logout) {
         $db = new Database;
         $member = $db->login($_POST['mem_user'], $_POST['mem_password']);
         if($member) {
-            $_SESSION['member'] = $member['mem_user'];
+            $_SESSION['member'] = $member['mem_id'];
             header("Location: /");
             die;
         } else {
