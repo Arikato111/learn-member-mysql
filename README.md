@@ -54,3 +54,27 @@
 | poll_name | varchar(200) |
 | poll_date | date |
 | poll_member_id | int(11) |
+
+---
+
+#### Table name : `poll_detail`
+
+| Field | Type | Key | Extra |
+| ----- | ---- | --- | ---- |
+| poll_detail_id | int(11) | PRI | AUTO_INCREMENT | 
+| poll_id | varchar(200) |
+| poll_detail_post | varchar(200) |
+| poll_detail_count | int(10) |
+
+---
+
+#### Table name : `poll_post`
+
+| Field | Type | Key | Extra |
+| ----- | ---- | --- | ---- |
+| poll_post_id | int(11) | PRI | AUTO_INCREMENT | 
+| poll_poll_id | int(11)) |
+| poll_post_member_id | int(11) |
+
+
+
