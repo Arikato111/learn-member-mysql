@@ -14,6 +14,8 @@ $PollList = function () use ($FrameContent, $title, $SaveAnswer) {
     }
     $message = "";
     $db = new Database;
+    $p = $db->getPoll_ByID($_GET['poll_id']);
+    $title("ตอบคำถาม | " . $p['poll_name']);
 
     if($db->checkPollPost($_GET['poll_id'], $_SESSION['member'])) {
         return $FrameContent("<div class=\"alert alert-success my-3 \">คุณตอบแบบสอบถามนี้เรียบร้อยแล้ว</div>");
@@ -25,7 +27,6 @@ $PollList = function () use ($FrameContent, $title, $SaveAnswer) {
     }
 
     
-    $p = $db->getPoll_ByID($_GET['poll_id']);
     // loop all polls
     $option = '';
     $op = $db->getPollDetaill_ByID($p['poll_id']);
@@ -38,7 +39,6 @@ $PollList = function () use ($FrameContent, $title, $SaveAnswer) {
             HTML;
     }
 
-    $title("ตอบคำถาม | " . $p['poll_name']);
     return $FrameContent(<<<HTML
     <div class="my-3">
         {$message}
