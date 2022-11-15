@@ -25,6 +25,8 @@
 - [x] Show all members
 - [x] Delete members
 - [x] Edit members
+- [x] Poll Manage (add Question and Answer)
+- [x] Members can send Vote to Poll
 
 ## Database [MySQL]
 
