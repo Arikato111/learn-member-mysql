@@ -94,16 +94,29 @@ class Database {
     VALUES (NULL, {$poll_id}, '$poll_detail_post', 0);";
     $this->conn->query($sql);
     }
-    public function getPoll() {
-        $sql = "SELECT * FROM poll";
+    public function getPoll(bool $desc = false) {
+        if($desc) {
+            $sql = "SELECT * FROM poll ORDER BY poll_id DESC";
+        } else {
+            $sql = "SELECT * FROM poll";
+        }
         $result =  $this->conn->query($sql);
         $pollAll = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $pollAll;
+    }
+    public function getPoll_ByID($poll_id) {
+        $sql = "SELECT * FROM `poll` WHERE poll_id = {$poll_id} LIMIT 1;";
+        $result = $this->conn->query($sql);
+        return mysqli_fetch_assoc($result);
     }
     public function getPollDetaill_ByID($poll_id) {
         $sql = "SELECT * FROM poll_detail WHERE poll_id = {$poll_id}";
         $result = $this->conn->query($sql);
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+    public function deletePollDetail_ByID($poll_detail_id) {
+        $sql = "DELETE FROM `poll_detail` WHERE poll_detail_id = {$poll_detail_id};";
+        $this->conn->query($sql);
     }
 }
 

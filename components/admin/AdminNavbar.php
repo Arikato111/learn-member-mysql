@@ -27,7 +27,7 @@ $Navbar = function () {
                         <a class="nav-link" href="/admin/poll">สร้างแบบสอบถาม</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/poll-list">รายการแบบสอบถาม</a>
+                        <a class="nav-link" href="/admin/poll-config">รายการแบบสอบถาม</a>
                     </li>
                 </ul>
             </div>

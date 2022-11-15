@@ -1,8 +1,8 @@
 <?php 
 $title = import('nexit/title');
 $AddPoll = import('./components/AddPoll');
-
-$Poll = function () use ($title, $AddPoll) {
+$TablePollList = import('./components/TablePollList');
+$Poll = function () use ($title, $AddPoll, $TablePollList) {
     $message = '';
 
     if(isset($_POST['submit'])) {
@@ -51,13 +51,13 @@ $Poll = function () use ($title, $AddPoll) {
                         
                         {$answer}
 
-
                         <div class="text-center my-3">
                             <button class="btn btn-success" name="submit">สร้างแบบสอบถาม</button>
                         </div>
 
                     </form>
                 </div>
+                {$TablePollList()}
         </div>
         <div class="col-md-2"></div>
     </div>
