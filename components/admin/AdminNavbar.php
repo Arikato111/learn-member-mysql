@@ -26,9 +26,6 @@ $Navbar = function () {
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/poll">สร้างแบบสอบถาม</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/poll-config">รายการแบบสอบถาม</a>
-                    </li>
                 </ul>
             </div>
             <span class="text-white">{$member['mem_name']} / </span>

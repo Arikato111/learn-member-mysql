@@ -13,9 +13,11 @@ $PollList = function () use ($FrameContent, $title, $AddPollDetail, $DeletePollD
     // check method DELETE || ADD
     $message = "";
     if (isset($_POST['delete']))
-         $message = $DeletePollDetail() ? '<div class="alert alert-danger text-center">ลบสำเร็จ</div>' : "";
+         $message = $DeletePollDetail() 
+         ? '<div class="alert alert-success text-center">ลบสำเร็จ</div>' :
+           '<div class="alert alert-danger text-center">ข้อมูลไม่ถูกต้อง</div>';
     if (isset($_POST['add']))
-         $message = $AddPollDetail() ? '<div class="alert alert-success text-center">เพิ่มสำเร็จ</div>' : "";
+         $message = $AddPollDetail() ? '<div class="alert alert-success text-center">เพิ่มสำเร็จ</div>' : '<div class="alert alert-danger text-center">ข้อมูลไม่ถูกต้อง</div>';
     
     $db = new Database;
     $p = $db->getPoll_ByID($_GET['poll_id']);
@@ -25,7 +27,14 @@ $PollList = function () use ($FrameContent, $title, $AddPollDetail, $DeletePollD
     // choices for poll
     foreach ($op as $s_op) {
         $option .= <<<HTML
-            <option value="{$s_op['poll_detail_id']}">{$s_op['poll_detail_post']}</option>
+            <div class="fs-5 d-flex justify-content-around">
+                <div>
+                    <input type="radio" name="delete_poll_post" value="{$s_op['poll_detail_id']}"> {$s_op['poll_detail_post']}
+                </div>
+                <div>
+                    <span class="border rounded border-secondary p-1 fs-6"> มีจำนวน {$s_op['poll_detail_count']} โหวต</span>
+                </div>
+            </div>
             HTML;
     }
 
@@ -40,14 +49,14 @@ $PollList = function () use ($FrameContent, $title, $AddPollDetail, $DeletePollD
             <label for="">เพิ่มคำตอบ</label>
             <input class="form-control shadow-sm" type="text" name="poll_detail_post">
             <div class="text-end my-1">
-                <button class="btn btn-success mb-1" name="add">+ เพิ่มคำตอบ</button>
+                <button class="btn btn-success m-1" name="add">+ เพิ่มคำตอบ</button>
             </div>
         </div>
         <hr>
         <label for="">ลบคำตอบ</label>
-        <select class="form-select my-3 shadow-sm" name="delete_poll_post" id="">
+        <div class="form-control my-3 shadow-sm" name="delete_poll_post" id="">
             {$option}
-        </select>
+        </div>
         <div class="text-end">
             <button class="btn btn-danger mb-1" name="delete">ลบคำตอบที่เลือก</button>
         </div>

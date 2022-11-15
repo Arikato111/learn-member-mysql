@@ -1,32 +1,36 @@
-<?php 
+<?php
 
-class Database {
+class Database
+{
     private $conn;
-    function __construct() {
+    function __construct()
+    {
         $this->conn = new mysqli(
             "localhost",
             "root",
             "",
             "eldenly"
         );
-
     }
-    public function getMemberInfo($id) {
+    public function getMemberInfo($id)
+    {
         $result = $this->conn->query("SELECT * FROM member WHERE mem_id = '{$id}' LIMIT 1");
         $member = mysqli_fetch_assoc($result);
-        if($member) {
+        if ($member) {
             return $member;
         } else {
             return false;
         }
     }
-    public function getAllMember() {
+    public function getAllMember()
+    {
         $result = $this->conn->query("SELECT * FROM member");
         $allMember = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $allMember;
     }
 
-    public function updateMember($id ,$mem_name, $mem_address, $mem_date, $mem_email, $mem_tel){
+    public function updateMember($id, $mem_name, $mem_address, $mem_date, $mem_email, $mem_tel)
+    {
         $this->conn->query("UPDATE `member` 
         SET 
         `mem_name`= '{$mem_name}',
@@ -37,7 +41,8 @@ class Database {
          WHERE mem_id = {$id}");
     }
 
-    public function register() {
+    public function register()
+    {
         $name = $_POST['mem_name'];
         $address = $_POST['mem_address'];
         $date = $_POST['mem_date'];
@@ -53,33 +58,35 @@ class Database {
         die;
     }
 
-    public function isUser($user) {
+    public function isUser($user)
+    {
         $sql = "SELECT * FROM member WHERE mem_user = '{$user}' LIMIT 1";
         $result = $this->conn->query($sql);
-        if($result) {
+        if ($result) {
             return mysqli_fetch_assoc($result);
         } else {
             return false;
         }
-
     }
-    public function login($user, $passwrod) {
+    public function login($user, $passwrod)
+    {
         $sql = "SELECT * FROM member WHERE mem_user  = '{$user}' AND mem_password = '{$passwrod}' LIMIT 1;";
-    $result = $this->conn->query($sql);
+        $result = $this->conn->query($sql);
         $user =  mysqli_fetch_assoc($result);
-        if($user) {
+        if ($user) {
             return $user;
         } else {
             return false;
         }
-
     }
-    public function deleteMember($id) {
+    public function deleteMember($id)
+    {
         $this->conn->query("DELETE FROM member WHERE mem_id = '{$id}'");
     }
-    public function addPoll($poll_name, $poll_member_id) {
+    public function addPoll($poll_name, $poll_member_id)
+    {
         $date = date('Y-m-d');
-        
+
         $sql = "INSERT INTO `poll`
         (`poll_id`, `poll_name`, `poll_date`, `poll_member_id`) 
         VALUES (NULL,'{$poll_name}','{$date}','{$poll_member_id}')";
@@ -88,14 +95,16 @@ class Database {
         $poll = mysqli_fetch_assoc($result);
         return $poll['poll_id'];
     }
-    public function addPollDetail($poll_id , $poll_detail_post) {
+    public function addPollDetail($poll_id, $poll_detail_post)
+    {
         $sql = "INSERT INTO `poll_detail`
         (`poll_detail_id`, `poll_id`, `poll_detail_post`, `poll_detail_count`) 
     VALUES (NULL, {$poll_id}, '$poll_detail_post', 0);";
-    $this->conn->query($sql);
+        $this->conn->query($sql);
     }
-    public function getPoll(bool $desc = false) {
-        if($desc) {
+    public function getPoll(bool $desc = false)
+    {
+        if ($desc) {
             $sql = "SELECT * FROM poll ORDER BY poll_id DESC";
         } else {
             $sql = "SELECT * FROM poll";
@@ -104,20 +113,45 @@ class Database {
         $pollAll = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $pollAll;
     }
-    public function getPoll_ByID($poll_id) {
+    public function getPoll_ByID($poll_id)
+    {
         $sql = "SELECT * FROM `poll` WHERE poll_id = {$poll_id} LIMIT 1;";
         $result = $this->conn->query($sql);
         return mysqli_fetch_assoc($result);
     }
-    public function getPollDetaill_ByID($poll_id) {
+    public function getPollDetaill_ByID($poll_id)
+    {
         $sql = "SELECT * FROM poll_detail WHERE poll_id = {$poll_id}";
         $result = $this->conn->query($sql);
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
-    public function deletePollDetail_ByID($poll_detail_id) {
+    public function deletePollDetail_ByID($poll_detail_id)
+    {
         $sql = "DELETE FROM `poll_detail` WHERE poll_detail_id = {$poll_detail_id};";
         $this->conn->query($sql);
     }
+
+    public function pollDetail_UP($poll_detail_id)
+    {
+        $sql = "UPDATE `poll_detail` SET `poll_detail_count` = `poll_detail_count`+1 WHERE poll_detail_id = {$poll_detail_id}";
+        $this->conn->query($sql);
+    }
+
+    public function checkPollPost($poll_id, $mem_id) {
+        $sql = "SELECT * FROM `poll_post` WHERE poll_poll_id = {$poll_id} AND poll_post_member_id = {$mem_id} LIMIT 1;";
+        $result = $this->conn->query($sql);
+        if($result->num_rows) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function pollPost_INSERT($poll_poll_id, $poll_post_member_id) {
+        $slq = "INSERT INTO `poll_post`
+        (`poll_post_id`, `poll_poll_id`, `poll_post_member_id`) 
+        VALUES (NULL,'{$poll_poll_id}','{$poll_post_member_id}');";
+        $this->conn->query($slq);
+    }
 }
 
-$export = null; 
+$export = null;
