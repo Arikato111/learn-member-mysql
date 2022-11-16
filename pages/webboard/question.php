@@ -6,13 +6,19 @@ $ShowBoardDetail = import('./components/board/ShowBoardDetail');
 $title = import('nexit/title');
 
 $Question = function () use ($FrameContent, $CreateAnswer, $ShowBoardDetail, $title) {
+    $message = ''; // เก็บการแจ้งเตือนสถานะต่างๆ
     // เช็คค่า q_id ห้ามหายห้ามขาด
     if(!isset($_GET['q_id']) || empty($_GET['q_id'])) {
         header('Location: /webboard');
     }
-    // เมื่อมีการเพิ่มคำตอบ
+    // เมื่อมีการเพิ่มคำตอบ 
     if(isset($_POST['submit'])) {
-        $CreateAnswer(); 
+        // เช็คการ login ถ้ายังไม่ได้ login จะมีการแจ้งเตือน
+        if(isset($_SESSION['member'])) {
+            $CreateAnswer(); 
+        } else {
+            $message = '<div class="alert alert-danger text-center">กรุณาเข้าสู่ระบบเพื่อเพิ่มคำตอบ</div>';
+        }
         // ฟังค์ชั่นการทำงานเกี่ยวกับการเพิ่มคำตอบ จากนั้นก็ปล่อยให้ทำงานในขั้นต่อไป
         // โดยไม่ต้องมีการหยุด
     }
@@ -25,7 +31,7 @@ $Question = function () use ($FrameContent, $CreateAnswer, $ShowBoardDetail, $ti
     $mem_ask = $db->getMemberInfo($Board['web_mem_id']);
     $Delete = '';
     // ถ้าผู้เข้าชมเป็นเจ้าของคำถาม
-    if($Board && isset($_SESSION['member']) && $Board['web_mem_id'] == $_SESSION['member']) {
+    if($Board && isset($_SESSION['member']) && $Board['web_mem_id'] == $_SESSION['member'] || (isset($_SESSION['status']) && $_SESSION['status'] == 'admin')) {
         // แก้ไขคำถาม เลยต้องมีการเช็คเยอะ
         // เช็ค saveEdit เพื่อบอกว่าเป็นการแก้ไข
         // เช็คค่าอัพเดท ป้องกันข้อมูลว่าง
@@ -88,6 +94,7 @@ $Question = function () use ($FrameContent, $CreateAnswer, $ShowBoardDetail, $ti
     $title($Board['web_name'] . " | Question"); // กำหนด title
     return $FrameContent(<<<HTML
     <div class="my-3">
+        {$message}
         {$ContentMode}
         <div class="my-3">
             <form class="form-control" method="POST">
