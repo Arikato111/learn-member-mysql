@@ -4,7 +4,7 @@ $CreateBoard = import('./components/board/CreateBoard');
 $title = import('nexit/title');
 
 $Webboard = function () use ($FrameContent, $CreateBoard, $title) {
-    $title('Web board');
+    $title('กระดานสนทนา');
     if(!isset($_SESSION['member'])) {
         $CreateBoard =fn()=> "";
     }

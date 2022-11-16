@@ -5,7 +5,7 @@ $export = function () {
         $db = new Database;
         $checkBord = $db->checkWebBoard_BYNAME($_POST['web_name'] . '?');
         if($checkBord) {
-            $message = '<div class="alert alert-danger">คำถามนี้ถูกตั้งแล้ว</div>';
+            $message = '<div class="alert alert-danger text-center">คำถามนี้ถูกตั้งแล้ว</div>';
         } else {
             $db->createWebBoard($_POST['web_name'] . '?');
             header('Location: /webboard');

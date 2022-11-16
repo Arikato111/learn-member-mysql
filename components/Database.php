@@ -186,6 +186,15 @@ class Database
         $board = mysqli_fetch_assoc($result);
         return $board;
     }
+    public function deleteBoard_BYID($web_id) {
+        $sql = "DELETE FROM `webbord` WHERE web_id = {$web_id};";
+        $this->conn->query($sql);
+    }
+    public function updateBoardName_BYID($web_id, $web_name, $web_mem_id) {
+        $web_date = date('Y-m-d');
+        $sql = "UPDATE `webbord` SET `web_name`='{$web_name}' , `web_date` = '{$web_date}' WHERE web_id = {$web_id} AND web_mem_id = '{$web_mem_id}';";
+        $this->conn->query($sql);
+    }
     public function createBoardDetail($web_id, $web_detail_post, $web_detail_mem_id){
         $web_detail_date = date('Y-m-d');
         $sql = "INSERT INTO `webbord_detail`
