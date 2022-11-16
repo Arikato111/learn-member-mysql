@@ -137,20 +137,66 @@ class Database
         $this->conn->query($sql);
     }
 
-    public function checkPollPost($poll_id, $mem_id) {
+    public function checkPollPost($poll_id, $mem_id)
+    {
         $sql = "SELECT * FROM `poll_post` WHERE poll_poll_id = {$poll_id} AND poll_post_member_id = {$mem_id} LIMIT 1;";
         $result = $this->conn->query($sql);
-        if($result->num_rows) {
+        if ($result->num_rows) {
             return true;
         } else {
             return false;
         }
     }
-    public function pollPost_INSERT($poll_poll_id, $poll_post_member_id) {
+    public function pollPost_INSERT($poll_poll_id, $poll_post_member_id)
+    {
         $slq = "INSERT INTO `poll_post`
         (`poll_post_id`, `poll_poll_id`, `poll_post_member_id`) 
         VALUES (NULL,'{$poll_poll_id}','{$poll_post_member_id}');";
         $this->conn->query($slq);
+    }
+    public function checkWebBoard_BYNAME($web_name)
+    {
+        $sql = "SELECT * FROM `webbord` WHERE web_name = '{$web_name}';";
+        $result = $this->conn->query($sql);
+        if ($result->num_rows) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function createWebBoard($web_name)
+    {
+        $mem_id = $_SESSION['member'];
+        $web_date = date("Y-m-d");
+        $sql = "INSERT INTO `webbord`
+        (`web_id`, `web_name`, `web_date`, `web_mem_id`) 
+        VALUES (NULL,'{$web_name}','{$web_date}','{$mem_id}')";
+        $this->conn->query($sql);
+    }
+    public function getAllBoard($desc = false)
+    {
+        $sort = $desc ? "ASC" : "DESC";
+        $sql = "SELECT * FROM `webbord` ORDER BY web_id {$sort};";
+        $result = $this->conn->query($sql);
+        return mysqli_fetch_all($result, 1);
+    }
+    public function getBoard_BYID($web_id) {
+        $sql = "SELECT * FROM webbord WHERE web_id = {$web_id} LIMIT 1;";
+        $result = $this->conn->query($sql);
+        $board = mysqli_fetch_assoc($result);
+        return $board;
+    }
+    public function createBoardDetail($web_id, $web_detail_post, $web_detail_mem_id){
+        $web_detail_date = date('Y-m-d');
+        $sql = "INSERT INTO `webbord_detail`
+            (`web_detail_id`, `web_id`, `web_detail_post`, `web_detail_date`, `web_detail_mem_id`) 
+            VALUES (NULL,'{$web_id}','{$web_detail_post}','{$web_detail_date}','{$web_detail_mem_id}');";
+        $this->conn->query($sql);
+    }
+    public function getBoardDetail_BYWEB($web_id){
+        $sql = "SELECT * FROM webbord_detail WHERE web_id = {$web_id} ORDER BY web_detail_id DESC;";
+        $result = $this->conn->query($sql);
+        return mysqli_fetch_all($result, 1);
     }
 }
 

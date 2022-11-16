@@ -14,7 +14,7 @@ $Home = function () use ($title, $LoginPage) {
         <div class="col-md-3"></div>
         <div class="col-md-6">
           <h1>
-            Welcome{$_SESSION['member']}
+            Welcome
           </h1>
           <div class="alert alert-{$color_status} text-center">
             {$isLogin}

@@ -3,8 +3,9 @@ $FrameContent = import('./components/FrameContent');
 $title = import('nexit/title');
 $AddPollDetail = import('./components/poll-detail/AddPollDetail');
 $DeletePollDetail = import('./components/poll-detail/DeletePollDetail');
+$ReportPollDetail = import('./components/poll-detail/ReportPollDetail');
 
-$PollList = function () use ($FrameContent, $title, $AddPollDetail, $DeletePollDetail) {
+$PollList = function () use ($FrameContent, $title, $AddPollDetail, $DeletePollDetail, $ReportPollDetail) {
     // CHECK NULL OF POLL_ID
     if (!isset($_GET['poll_id'])) {
         header("Location: /admin/poll");
@@ -61,6 +62,7 @@ $PollList = function () use ($FrameContent, $title, $AddPollDetail, $DeletePollD
             <button class="btn btn-danger mb-1" name="delete">ลบคำตอบที่เลือก</button>
         </div>
     </form>
+    {$ReportPollDetail()}
     </div>
     HTML);
 };
