@@ -78,5 +78,24 @@
 | poll_poll_id | int(11)) |
 | poll_post_member_id | int(11) |
 
+---
 
+#### Table name : `webbord`
 
+| Field | Type | Key | Extra |
+| ----- | ---- | --- | ---- |
+| web_id | int(11) | PRI | AUTO_INCREMENT | 
+| web_name | varchar(200) |
+| web_date | date |
+| web_mem_id | int(11) |
+
+---
+#### Table name : `webbord_detail`
+
+| Field | Type | Key | Extra |
+| ----- | ---- | --- | ---- |
+| web_detail_id | int(11) | PRI | AUTO_INCREMENT | 
+| web_id | int(11) |
+| web_detail_post | varchar(200) |
+| web_detail_date | date |
+| web_detail_mem_id | int(11) |
