@@ -20,7 +20,7 @@ $Navbar = function () {
         $db = new Database;
         $member = $db->getMemberInfo($_SESSION['member']);
         $LogoutDisplay = <<<HTML
-        {$member['mem_name']} / <a class="nav-link text-danger" style="cursor:pointer" onclick="confirmLogout()"> ออกจากระบบ</a>
+        <a style="text-decoration: none;" href="/member">{$member['mem_name']}</a> / <a class="nav-link text-danger" style="cursor:pointer" onclick="confirmLogout()"> ออกจากระบบ</a>
         HTML;
     }
     $db = new Database;

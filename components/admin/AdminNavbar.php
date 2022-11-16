@@ -28,7 +28,9 @@ $Navbar = function () {
                     </li>
                 </ul>
             </div>
-            <span class="text-white">{$member['mem_name']} / </span>
+            <a style="text-decoration: none;" href="/member">
+                <span class="text-white">{$member['mem_name']} / </span>
+            </a>
             <a class="text-danger" onclick="confirmLogout()">ออกจากระบบ</a>
         </div>
     </nav>

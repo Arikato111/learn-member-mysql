@@ -1,22 +1,23 @@
 <?php 
 $title = import('nexit/title');
+$NotFound = import('./pages/_error');
 
-$export = function () use ($title) {
+$export = function () use ($title, $NotFound) {
     $message = "";
-    if(!isset($_GET['id']) || empty($_GET['id'])) {
-        header("Location: /admin/member");
+    if(!isset($_SESSION['member'])) {
+        return $NotFound();
     }
     
     $db = new Database;
 
     if(isset($_POST['submit']))  {
-        $db->updateMember($_GET['id'], $_POST['mem_name'], $_POST['mem_address'], $_POST['mem_date'], $_POST['mem_email'], $_POST['mem_tel']);
+        $db->updateMember($_SESSION['member'], $_POST['mem_name'], $_POST['mem_address'], $_POST['mem_date'], $_POST['mem_email'], $_POST['mem_tel']);
         $message = <<<HTML
         <div class="alert alert-success text-center">update successfuly</div>
         HTML;
     }
 
-    $member = $db->getMemberInfo($_GET['id']);
+    $member = $db->getMemberInfo($_SESSION['member']);
 
     $title("Edit member | {$member['mem_user']}");
     return <<<HTML

@@ -3,11 +3,11 @@ $export = function () {
     $message = '';
     if(isset($_POST['submit']) && isset($_POST['web_name']) && !empty($_POST['web_name'])) {
         $db = new Database;
-        $checkBord = $db->checkWebBoard_BYNAME($_POST['web_name']);
+        $checkBord = $db->checkWebBoard_BYNAME($_POST['web_name'] . '?');
         if($checkBord) {
             $message = '<div class="alert alert-danger">คำถามนี้ถูกตั้งแล้ว</div>';
         } else {
-            $db->createWebBoard($_POST['web_name']);
+            $db->createWebBoard($_POST['web_name'] . '?');
             header('Location: /webboard');
             die;
         }

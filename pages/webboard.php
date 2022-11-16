@@ -16,8 +16,9 @@ $Webboard = function () use ($FrameContent, $CreateBoard, $title) {
         $content .= <<<HTML
         <a style="text-decoration: none" href="/webboard/question?q_id={$abb['web_id']}">
             <div class="form-control my-3">
-                <div class="fs-4 block">{$abb['web_name']}</div>
-                <div class="text">ผู้ถาม : {$mem_ask['mem_name']}</div>
+                <div class="fs-4 form-control">{$abb['web_name']}</div>
+                <div>ผู้ถาม : {$mem_ask['mem_name']}</div>
+                <div class="">เวลา : {$abb['web_date']}</div>
             </div>
         </a>
         HTML;

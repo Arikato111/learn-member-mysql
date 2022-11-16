@@ -2,8 +2,9 @@
 $FrameContent = import('./components/FrameContent');
 $CreateAnswer = import('./components/board/CreateAnswer');
 $ShowBoardDetail = import('./components/board/ShowBoardDetail');
+$title = import('nexit/title');
 
-$Question = function () use ($FrameContent, $CreateAnswer, $ShowBoardDetail) {
+$Question = function () use ($FrameContent, $CreateAnswer, $ShowBoardDetail, $title) {
     if(!isset($_GET['q_id']) || empty($_GET['q_id'])) {
         header('Location: /webboard');
     }
@@ -16,6 +17,7 @@ $Question = function () use ($FrameContent, $CreateAnswer, $ShowBoardDetail) {
     if(!$Board) {
         return $FrameContent('<div class="alert alert-danger text-center my-3">ไม่พบคำถาม</div>');
     }
+    $title($Board['web_name'] . " | Question");
     return $FrameContent(<<<HTML
     <div class="my-3">
         <div class="form-control shadow-sm">
