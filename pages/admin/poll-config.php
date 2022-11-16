@@ -38,7 +38,7 @@ $PollList = function () use ($FrameContent, $title, $AddPollDetail, $DeletePollD
             HTML;
     }
 
-    $title("Show Poll");
+    $title("poll config");
     return $FrameContent(<<<HTML
     <div class="my-3">
         {$message}

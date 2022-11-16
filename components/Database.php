@@ -54,7 +54,7 @@ class Database
         $sql = "INSERT INTO `member`(`mem_id`, `mem_name`, `mem_address`, `mem_date`, `mem_email`, `mem_tel`, `mem_user`, `mem_password`, `mem_status`)
                 VALUES (NULL,'{$name}','{$address}','{$date}','{$email}','{$tel}','{$user}','{$password}','user');";
         $this->conn->query($sql);
-        header("Location: /register");
+        header("Location: /login");
         die;
     }
 
