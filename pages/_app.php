@@ -5,19 +5,21 @@ import('wisit-router');
 import("./components/Database");
 $Navbar = import('./components/Navbar');
 $NotFountPage = import('./pages/_error');
+$AdminNavbar = import('./components/admin/AdminNavbar');
 
-$export = function ($Component) use ($Navbar, $NotFountPage) {
+$export = function ($Component) use ($Navbar, $NotFountPage, $AdminNavbar) {
   $GLOBALS['title'] = 'title'; // default title
-
+  $MainNavbar = $Navbar;
   $content = $Component();
   if(getParams(0) == 'admin') {
-    // check permission
+    // check permission of admin
     if(!isset($_SESSION['member']) || !isset($_SESSION['status']) || $_SESSION['status'] != 'admin') {
       // if have no permission show notfound page
+      // ถ้าไม่ใช้ admin จะโชว์หน้าแจ้งเตือน `ไม่พบหน้าที่ต้องการ` ทันที
       $content = $NotFountPage();
     } else {
-      // check admin to change navbar
-      $Navbar = import('./components/admin/AdminNavbar');
+      // if member is admin use AdminNavbar
+      $MainNavbar = $AdminNavbar;
     }
   }
   
@@ -34,7 +36,7 @@ $export = function ($Component) use ($Navbar, $NotFountPage) {
 
     </head>
     <body>
-      {$Navbar()}
+      {$MainNavbar()}
       {$content}
       <script src="/styles/bootstrap/js/bootstrap.bundle.js"></script>
       <script src="/styles/script.js"></script>
