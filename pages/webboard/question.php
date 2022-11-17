@@ -4,8 +4,9 @@ $FrameContent = import('./components/FrameContent');
 $CreateAnswer = import('./components/board/CreateAnswer');
 $ShowBoardDetail = import('./components/board/ShowBoardDetail');
 $title = import('nexit/title');
+$DeleteAnswer = import('./components/board/DeleteAnswer');
 
-$Question = function () use ($FrameContent, $CreateAnswer, $ShowBoardDetail, $title) {
+$Question = function () use ($FrameContent, $CreateAnswer, $ShowBoardDetail, $title, $DeleteAnswer) {
     $message = ''; // เก็บการแจ้งเตือนสถานะต่างๆ
     // เช็คค่า q_id ห้ามหายห้ามขาด
     if(!isset($_GET['q_id']) || empty($_GET['q_id'])) {

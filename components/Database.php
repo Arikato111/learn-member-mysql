@@ -207,6 +207,20 @@ class Database
         $result = $this->conn->query($sql);
         return mysqli_fetch_all($result, 1);
     }
+    public function getBoardDetail_BYID($web_detail_id){
+        $sql = "SELECT * FROM webbord_detail WHERE web_detail_id = {$web_detail_id} LIMIT 1;";
+        $result = $this->conn->query($sql);
+        return mysqli_fetch_assoc($result);
+    }
+    public function updateBoardDetail($web_detail_id, $web_detail_post) {
+        $sql = "UPDATE `webbord_detail` SET `web_detail_post` = '{$web_detail_post}' WHERE web_detail_id = {$web_detail_id};";
+        $this->conn->query($sql);
+    }
+
+    public function deleteBoardDetail_BYID($web_detail_id) {
+        $sql = "DELETE FROM `webbord_detail` WHERE web_detail_id = {$web_detail_id};";
+        $this->conn->query($sql);
+    }
 }
 
 $export = null;
