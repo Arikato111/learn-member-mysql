@@ -51,8 +51,8 @@ class Database
         $user = $_POST['mem_user'];
         $password = $_POST['mem_password'];
 
-        $sql = "INSERT INTO `member`(`mem_id`, `mem_name`, `mem_address`, `mem_date`, `mem_email`, `mem_tel`, `mem_user`, `mem_password`, `mem_status`)
-                VALUES (NULL,'{$name}','{$address}','{$date}','{$email}','{$tel}','{$user}','{$password}','user');";
+        $sql = "INSERT INTO `member`(`mem_id`, `mem_name`, `mem_address`, `mem_date`, `mem_email`, `mem_tel`, `mem_user`, `mem_password`, `mem_status`, `mem_stat`)
+                VALUES (NULL,'{$name}','{$address}','{$date}','{$email}','{$tel}','{$user}','{$password}','user', 0);";
         $this->conn->query($sql);
         header("Location: /login");
         die;
@@ -219,6 +219,11 @@ class Database
 
     public function deleteBoardDetail_BYID($web_detail_id) {
         $sql = "DELETE FROM `webbord_detail` WHERE web_detail_id = {$web_detail_id};";
+        $this->conn->query($sql);
+    }
+    public function State_UP ($mem_id) {
+        
+        $sql = "UPDATE `member` SET `mem_stat` = `mem_stat`+1 WHERE mem_id = {$mem_id} LIMIT 1;";
         $this->conn->query($sql);
     }
 }

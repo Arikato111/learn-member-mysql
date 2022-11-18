@@ -1,12 +1,14 @@
 <?php 
-
-$Navbar = function () {
+$Stat = import('./components/Stat');
+$Navbar = function () use ($Stat) {
+    $db = new Database;
+    
     $AddminMenu = isset($_SESSION['status']) && $_SESSION['status'] == 'admin' ?
     <<<HTML
     <li class="nav-item">
         <a class="nav-link" href="/admin/">admin</a>
     </li>
-    HTML: "";
+    HTML : "";
 
     $Logined = isset($_SESSION['member']) ? '': 
         '<li class="nav-item">
@@ -15,15 +17,14 @@ $Navbar = function () {
           <li class="nav-item">
              <a class="nav-link" href="/login">เข้าสู่ระบบ</a>
           </li>';
+
     $LogoutDisplay = "";
     if(isset($_SESSION['member'])) {
-        $db = new Database;
         $member = $db->getMemberInfo($_SESSION['member']);
         $LogoutDisplay = <<<HTML
-        <a style="text-decoration: none;" href="/member">{$member['mem_name']}</a> / <a class="nav-link text-danger" style="cursor:pointer" onclick="confirmLogout()"> ออกจากระบบ</a>
+        {$Stat()} / <a style="text-decoration: none;" href="/member">{$member['mem_name']}</a> / <a class="nav-link text-danger" style="cursor:pointer" onclick="confirmLogout()"> ออกจากระบบ</a>
         HTML;
     }
-    $db = new Database;
     return <<<HTML
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
