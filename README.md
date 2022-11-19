@@ -45,6 +45,7 @@
 | mem_user | varchar(50) |
 | mem_password | varchar(50) |
 | mem_status | varchar(10) |
+| mem_stat | int(10) |
 
 ---
 
