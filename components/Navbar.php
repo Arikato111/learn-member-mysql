@@ -48,8 +48,8 @@ $Navbar = function () use ($Stat) {
                     </li>
                         {$Logined}
                 </ul>
+                {$LogoutDisplay}
             </div>
-            {$LogoutDisplay}
         </div>
     </nav>
     HTML;

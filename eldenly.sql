@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2022 at 02:14 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Dec 08, 2022 at 07:11 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,17 +36,18 @@ CREATE TABLE `member` (
   `mem_tel` varchar(20) NOT NULL,
   `mem_user` varchar(50) NOT NULL,
   `mem_password` varchar(50) NOT NULL,
-  `mem_status` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `mem_status` varchar(10) NOT NULL,
+  `mem_stat` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`mem_id`, `mem_name`, `mem_address`, `mem_date`, `mem_email`, `mem_tel`, `mem_user`, `mem_password`, `mem_status`) VALUES
-(18, 'hello-world', 'addres24304', '2003-02-21', 'arei@geamil.com', '203432039480', 'hello', 'hello', 'user'),
-(19, 'nawasan wisitsingkhon', 'address222', '2002-02-22', '2002@gmail', '093420347039', 'nawasan', 'password', 'admin'),
-(20, 'jake', 'address-mode2', '2002-02-22', 'jake@email.com', '0937293856', 'jake', 'jake', 'user');
+INSERT INTO `member` (`mem_id`, `mem_name`, `mem_address`, `mem_date`, `mem_email`, `mem_tel`, `mem_user`, `mem_password`, `mem_status`, `mem_stat`) VALUES
+(18, 'hello-world', 'addres24304', '2003-02-21', 'arei@geamil.com', '203432039480', 'hello', 'hello', 'user', 0),
+(19, 'nawasan wisitsingkhon', 'address222', '2002-02-22', '2002@gmail', '093420347039', 'nawasan', 'password', 'admin', 67),
+(20, 'jake', 'address-mode2', '2002-02-22', 'jake@email.com', '0937293856', 'jake', 'jake', 'user', 0);
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE `poll` (
   `poll_name` varchar(200) NOT NULL,
   `poll_date` date NOT NULL,
   `poll_member_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `poll`
@@ -87,7 +88,7 @@ CREATE TABLE `poll_detail` (
   `poll_id` int(11) NOT NULL,
   `poll_detail_post` varchar(200) NOT NULL,
   `poll_detail_count` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `poll_detail`
@@ -142,7 +143,7 @@ CREATE TABLE `poll_post` (
   `poll_post_id` int(11) NOT NULL,
   `poll_poll_id` int(11) NOT NULL,
   `poll_post_member_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `poll_post`
@@ -167,7 +168,7 @@ CREATE TABLE `webbord` (
   `web_name` varchar(200) NOT NULL,
   `web_date` date NOT NULL,
   `web_mem_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `webbord`
@@ -190,7 +191,7 @@ CREATE TABLE `webbord_detail` (
   `web_detail_post` varchar(200) NOT NULL,
   `web_detail_date` date NOT NULL,
   `web_detail_mem_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `webbord_detail`
